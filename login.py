@@ -4,7 +4,7 @@ Module for the GUI and initializing the windows
 import PySimpleGUI as sg
 
 
-sg.theme('DarkBlue4')
+sg.theme('DarkGrey5')
 
 # Define the window's contents
 layout = [
