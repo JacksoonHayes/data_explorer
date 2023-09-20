@@ -16,26 +16,28 @@ y = [0, 2, 4, 6, 8, 10]
 ax.plot(x, y)
 ax.set_title('Placeholder Graph')
 
+# Column layout for the GUI
+
+col1 = [
+    [sg.Canvas(key='-CANVAS-')],
+    [sg.Button('<', size=(10, 1), key='Pan Left'),
+    sg.Button('➖', size=(10, 1), key='Zoom Out'),
+    sg.Button('➕', size=(10, 1), key='Zoom In'),
+    sg.Button('>', size=(10, 1), key='Pan Right')]
+]
+
+col2 = [
+    [sg.Text('Summary', justification='center')],
+    [sg.Multiline(key='-SUMMARY-', size=(30, 8))],
+    [sg.Text('Chat', justification='center')],
+    [sg.Multiline(key='-CHAT-', size=(30, 12))],
+    [sg.Button('Send')]  
+]
+
 # Create a PySimpleGUI window layout with two columns
 layout = [
     [sg.Button('Home', size=(15, 1), button_color=('white', 'navy'), key='Home'),],
-    [
-        sg.Column([
-        [sg.Canvas(key='-CANVAS-')],
-        [sg.Button('<', size=(10, 1), key='Pan Left'),
-        sg.Button('➖', size=(10, 1), key='Zoom Out'),
-        sg.Button('➕', size=(10, 1), key='Zoom In'),
-        sg.Button('>', size=(10, 1), key='Pan Right')]
-        ], element_justification='center'),
-        
-        sg.Column([
-            [sg.Text('Summary', justification='center')],
-            [sg.Multiline(key='-SUMMARY-', size=(30, 8))],  # Create a Multiline text box for summary
-            [sg.Text('Chat', justification='center')],
-            [sg.Multiline(key='-CHAT-', size=(30, 12))],  # Create a Multiline text box for chat
-            [sg.Button('Send')],
-        ], element_justification='center'),  # Center the elements in the right column
-    ],
+    [sg.Column(col1, element_justification='c'), sg.Column(col2, element_justification='c')]
 ]
 
 # Create the PySimpleGUI window
