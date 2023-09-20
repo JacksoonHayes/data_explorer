@@ -19,7 +19,12 @@ ax.set_title('Placeholder Graph')
 # Column layout for the GUI
 
 col1 = [
+    [sg.Button('Chart Settings', size=(10, 1), button_color=('white', 'navy'), key='Chart Settings'),
+    sg.Button('Set data', size=(15, 1), button_color=('white', 'navy'), key='Set data'), 
+    sg.Button('Input', size=(15, 1), button_color=('white', 'navy'), key='Input')],
+    
     [sg.Canvas(key='-CANVAS-')],
+    
     [sg.Button('<', size=(10, 1), key='Pan Left'),
     sg.Button('➖', size=(10, 1), key='Zoom Out'),
     sg.Button('➕', size=(10, 1), key='Zoom In'),
