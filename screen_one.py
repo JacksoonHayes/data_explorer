@@ -19,27 +19,16 @@ sg.theme('DarkGrey5')
 
 navbar = [
     sg.Button('Home', size=(15, 1), key='Home', button_color=('white', '#00373B')),
-    sg.Push(),
+    sg.Push(background_color='#6E6E6E'),
     sg.Button('Screen 2', size=(15, 1), key='Screen 2', button_color=('white', '#00373B')),
     sg.Button('Screen 3', size=(15, 1), key='Screen 3', button_color=('white', '#00373B'))
-]
-
-summary_col = [
-    [sg.Text('Summary', justification='center')],
-    [sg.Multiline(key='-SUMMARY-', size=(30, 12), background_color='#C2C2C2')]
-]
-
-chat_col = [
-    [sg.Text('Chat', justification='center')],
-    [sg.Multiline(key='-CHAT-', size=(30, 17), background_color='#C2C2C2')],
-    [sg.Button('Send')]
 ]
 
 col1 = [
     [sg.Button('Chart Settings', size=(14, 1), key='Chart Settings'),
     sg.Push(),
-    sg.Button('Set data', size=(15, 1), key='Set data'), 
-    sg.Button('Input', size=(15, 1), key='Input')],
+    sg.Button('Set Data', size=(15, 1), key='Set Data'), 
+    sg.Button('Upload Data', size=(15, 1), key='Upload Data')],
     
     [sg.Canvas(key='-CANVAS-')],
     
@@ -52,8 +41,11 @@ col1 = [
 ]
 
 col2 = [
-    [sg.Column(summary_col, element_justification='c')], 
-    [sg.Column(chat_col, element_justification='c')]
+    [sg.Text('Summary', justification='center')],
+    [sg.Multiline(key='-SUMMARY-', size=(30, 12), background_color='#C2C2C2', no_scrollbar=True)],
+    [sg.Text('Chat', justification='center')],
+    [sg.Multiline(key='-CHAT-', size=(30, 17), background_color='#C2C2C2')],
+    [sg.Input(size = (25, 1), background_color='#C2C2C2'), sg.Button('Send')]
 ]
 
 layout = [
