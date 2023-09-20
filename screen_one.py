@@ -24,6 +24,17 @@ navbar = [
     sg.Button('Screen 3', size=(15, 1), key='Screen 3', button_color=('white', '#00373B'))
 ]
 
+summary_col = [
+    [sg.Text('Summary', justification='center')],
+    [sg.Multiline(key='-SUMMARY-', size=(30, 12), background_color='#C2C2C2')]
+]
+
+chat_col = [
+    [sg.Text('Chat', justification='center')],
+    [sg.Multiline(key='-CHAT-', size=(30, 17), background_color='#C2C2C2')],
+    [sg.Button('Send')]
+]
+
 col1 = [
     [sg.Button('Chart Settings', size=(14, 1), key='Chart Settings'),
     sg.Push(),
@@ -41,11 +52,8 @@ col1 = [
 ]
 
 col2 = [
-    [sg.Text('Summary', justification='center')],
-    [sg.Multiline(key='-SUMMARY-', size=(30, 12), background_color='#C2C2C2')],
-    [sg.Text('Chat', justification='center')],
-    [sg.Multiline(key='-CHAT-', size=(30, 17), background_color='#C2C2C2')],
-    [sg.Button('Send')]  
+    [sg.Column(summary_col, element_justification='c')], 
+    [sg.Column(chat_col, element_justification='c')]
 ]
 
 layout = [
