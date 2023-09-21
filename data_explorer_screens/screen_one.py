@@ -17,6 +17,8 @@ ax.set_title('Placeholder Graph')
 
 sg.theme('DarkGrey5')
 
+sg.set_options(font=('Century Gothic', 10))
+
 navbar = [
     sg.Button('Home', size=(15, 1), key='Home', button_color=('white', '#00373B')),
     sg.Push(background_color='#6E6E6E'),
@@ -42,9 +44,9 @@ col1 = [
 
 col2 = [
     [sg.Text('Summary', justification='center')],
-    [sg.Multiline(key='-SUMMARY-', size=(30, 12), background_color='#C2C2C2', no_scrollbar=True)],
+    [sg.Multiline(key='-SUMMARY-', size=(30, 11), background_color='#C2C2C2', no_scrollbar=True, pad=(0, (6, 6)))],
     [sg.Text('Chat', justification='center')],
-    [sg.Multiline(key='-CHAT-', size=(30, 17), background_color='#C2C2C2')],
+    [sg.Multiline(key='-CHAT-', size=(30, 16), background_color='#C2C2C2')],
     [sg.Input(size = (25, 1), background_color='#C2C2C2'), sg.Button('Send')]
 ]
 

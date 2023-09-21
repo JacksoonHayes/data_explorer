@@ -3,12 +3,14 @@ Module for the GUI and initializing the windows
 """
 import PySimpleGUI as sg
 
-
 sg.theme('DarkGrey5')
+
+title = ("Century Gothic", 18)
+sg.set_options(font=('Century Gothic', 10))
 
 # Define the window's contents
 layout = [
-    [sg.T("Login", font="any 16")],
+    [sg.T("Login", font=title)],
     [sg.HSeparator(pad=(70, 20))],
     [sg.Text("Username:"), sg.Input(key='-USERNAME-', size=(18,1))],
     [sg.Text("Password:"),sg.Input(key='-PASSWORD-', password_char='•', size=(18,1))],
