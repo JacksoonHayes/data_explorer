@@ -7,13 +7,13 @@ import matplotlib.pyplot as plt
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-fig, ax = plt.subplots(figsize=(6, 5))
+plt.subplots(figsize=(6, 5))
 
 # Placeholder data for the graph
 x = [0, 2, 4, 6, 8, 10]
 y = [0, 2, 4, 6, 8, 10]
-ax.plot(x, y)
-ax.set_title('Placeholder Graph')
+plt.plot(x, y)
+plt.title('Placeholder Graph')
 
 sg.theme('DarkGrey5')
 
@@ -58,7 +58,7 @@ window = sg.Window('Data Explorer', layout, finalize=True, background_color='#6E
 
 canvas_elem = window['-CANVAS-']
 canvas = FigureCanvasTkAgg(fig, master=canvas_elem.Widget)
-canvas.get_tk_widget().pack(side='top', fill='both', expand=1)
+canvas.get_tk_widget().pack(side='top', fill='both', expand=10)
 
 while True:
     event, values = window.read()

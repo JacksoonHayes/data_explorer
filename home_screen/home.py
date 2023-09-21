@@ -48,7 +48,7 @@ while True:
     if event == '-LOGOUT-':
         window.close()
         # Run the login screen GUI
-        subprocess.Popen(['python', 'login.py'])
+        subprocess.Popen(['python', 'application.py'])
         break
     
     
