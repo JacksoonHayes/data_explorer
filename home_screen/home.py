@@ -11,7 +11,7 @@ sg.set_options(font=('Century Gothic', 10))
 
 header = [
     [sg.Push(), sg.T("Home Screen", font=title, pad=((100, 0), (10, 0))),
-    sg.Push(), sg.Button('Logout', key='-LOGOUT-', size=(12, 1), pad=(0, (10, 0)), button_color=('white', '#636363'))]
+    sg.Push(), sg.Button('Logout', key='-LOGOUT-', size=(12, 1), pad=(0, (10, 0)), button_color=('white', '#4DA30F'))]
 ]
 
 col1 = [
@@ -48,7 +48,7 @@ while True:
     if event == '-LOGOUT-':
         window.close()
         # Run the login screen GUI
-        subprocess.Popen(['python', 'application.py'])
+        subprocess.Popen(['python', 'app.py'])
         break
     
     

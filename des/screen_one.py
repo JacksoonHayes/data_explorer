@@ -7,12 +7,14 @@ import matplotlib.pyplot as plt
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
+
 fig, ax = plt.subplots(figsize=(6, 5))
 
 # Placeholder data for the graph
 x = [0, 2, 4, 6, 8, 10]
 y = [0, 2, 4, 6, 8, 10]
 ax.plot(x, y)
+ax.plot(y, x)
 ax.set_title('Placeholder Graph')
 
 sg.theme('DarkGrey5')
@@ -20,10 +22,10 @@ sg.theme('DarkGrey5')
 sg.set_options(font=('Century Gothic', 10))
 
 navbar = [
-    sg.Button('Home', size=(15, 1), key='Home', button_color=('white', '#00373B')),
+    [sg.Button('Home', size=(15, 1), key='Home', button_color=('white', '#4DA30F')),
     sg.Push(background_color='#6E6E6E'),
-    sg.Button('Screen 2', size=(15, 1), key='Screen 2', button_color=('white', '#00373B')),
-    sg.Button('Screen 3', size=(15, 1), key='Screen 3', button_color=('white', '#00373B'))
+    sg.Button('Screen 2', size=(15, 1), key='Screen 2', button_color=('white', '#4DA30F')),
+    sg.Button('Screen 3', size=(15, 1), key='Screen 3', button_color=('white', '#4DA30F'))]
 ]
 
 col1 = [
@@ -59,6 +61,7 @@ window = sg.Window('Data Explorer', layout, finalize=True, background_color='#6E
 canvas_elem = window['-CANVAS-']
 canvas = FigureCanvasTkAgg(fig, master=canvas_elem.Widget)
 canvas.get_tk_widget().pack(side='top', fill='both', expand=1)
+
 
 while True:
     event, values = window.read()
