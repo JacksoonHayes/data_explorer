@@ -6,8 +6,21 @@ import PySimpleGUI as sg
 
 import home_screen.home as home
 
-# Sub routine for the login screen GUI
 def make_login():
+    """
+    Create and display the login screen for the application.
+
+    This function creates the login screen GUI, allowing users to enter a username and password.
+    It checks the entered credentials against a hardcoded dictionary of usernames and passwords.
+    If the credentials are valid, it opens the home screen; otherwise, it displays an error message.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    """
+    
     sg.theme('DarkGrey5')
 
     # Set the default font for the GUI

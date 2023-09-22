@@ -11,8 +11,19 @@ import home_screen.home as home
 import des.screen_one as des_one
 import des.screen_two as des_two
 
-# Sub routine for the DES 3 GUI
 def make_screen_three():
+    """
+    Create and display the main screen for DES 3 GUI.
+
+    This function creates the main screen for the Data Explorer Screen 1 GUI, which includes a graph, navigation bar, and controls.
+    Users can interact with the graph (zoom, pan) and navigate to other screens.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    """
 
     # Create the graph
     fig, ax = plt.subplots()

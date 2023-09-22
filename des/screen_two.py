@@ -11,7 +11,6 @@ import home_screen.home as home
 import des.screen_one as des_one
 import des.screen_three as des_three
 
-# Sub routine for the DES 2 GUI
 def make_screen_two():
     """
     Create and display the main screen for DES 2 GUI.
