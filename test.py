@@ -13,8 +13,20 @@ import PySimpleGUI as sg
 def make_win1():
     layout = [[sg.Text('This is the FIRST WINDOW'), sg.Text('      ', k='-OUTPUT-')],
               [sg.Text('Click Popup anytime to see a modal popup')],
-              [sg.Button('Launch 2nd Window'), sg.Button('Popup'), sg.Button('Exit')]]
+              [sg.Button('Launch 2nd Window'), sg.Button('Launch 3rd Window'), sg.Button('Popup'), sg.Button('Exit')]]
     return sg.Window('Window Title', layout, location=(800,600), finalize=True)
+
+def make_win3():
+    layout = [[sg.Text('This is the FIRST WINDOW'), sg.Text('      ', k='-OUTPUT-')],
+              [sg.Text('Click Popup anytime to see a modal popup')],
+              [sg.Button('Launch 4th Window'), sg.Button('Popup'), sg.Button('Exit')]]
+    return sg.Window('thorgut', layout, location=(800,600), finalize=True)
+
+def make_win4():
+    layout = [[sg.Text('This is the FIRST WINDOW'), sg.Text('      ', k='-OUTPUT-')],
+              [sg.Text('Click Popup anytime to see a modal popup')],
+              [sg.Button('Launch 4th Window'), sg.Button('Popup'), sg.Button('Exit')]]
+    return sg.Window('fourth', layout, location=(800,600), finalize=True)
 
 
 def make_win2():
@@ -27,7 +39,7 @@ def make_win2():
 
 
 def main():
-    window1, window2 = make_win1(), None        # start off with 1 window open
+    window1, window2, window3, window4 = make_win1(), None, None, None       # start off with 1 window open
 
     while True:             # Event Loop
         window, event, values = sg.read_all_windows()
@@ -35,12 +47,20 @@ def main():
             window.close()
             if window == window2:       # if closing win 2, mark as closed
                 window2 = None
+            elif window == window3:
+                window3 = None
+            elif window == window4:
+                window4 = None
             elif window == window1:     # if closing win 1, exit program
                 break
         elif event == 'Popup':
             sg.popup('This is a BLOCKING popup','all windows remain inactive while popup active')
         elif event == 'Launch 2nd Window' and not window2:
             window2 = make_win2()
+        elif event == 'Launch 3rd Window' and not window3:
+            window3 = make_win3()
+        elif event == 'Launch 4th Window' and not window4:
+            window4 = make_win4()
         elif event == '-IN-':
             window['-OUTPUT-'].update(f'You enetered {values["-IN-"]}')
         elif event == 'Erase':

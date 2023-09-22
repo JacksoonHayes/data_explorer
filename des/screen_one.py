@@ -7,6 +7,10 @@ import matplotlib.pyplot as plt
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
+import home_screen.home as home
+import des.screen_two as des_two
+import des.screen_three as des_three
+
 def make_screen_one():
 
     fig, ax = plt.subplots()
@@ -70,9 +74,14 @@ def make_screen_one():
             break
 
         if event == 'Zoom In':
-            ax.set_xlim(0, 10)
-            ax.set_ylim(0, 10)
-            canvas.draw()
+            if ax.get_xlim()[1] == 10 and ax.get_ylim()[1] == 10:
+                ax.set_xlim(0, 5)
+                ax.set_ylim(0, 5)
+                canvas.draw()
+            else:
+                ax.set_xlim(0, 10)
+                ax.set_ylim(0, 10)
+                canvas.draw()
 
         if event == 'Zoom Out':
             ax.set_xlim(-5, 15)
@@ -88,6 +97,18 @@ def make_screen_one():
             current_xlim = ax.get_xlim()
             ax.set_xlim(current_xlim[0] + 1, current_xlim[1] + 1)
             canvas.draw()
+            
+        if event == 'Home':
+            home.main()
+            break
+        
+        if event == 'Screen 2':
+            des_two.make_screen_two()
+            break
+        
+        if event == 'Screen 3':
+            des_three.make_screen_three()
+            break
 
     window.close()
 

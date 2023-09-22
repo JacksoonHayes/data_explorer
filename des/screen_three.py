@@ -7,12 +7,16 @@ import matplotlib.pyplot as plt
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
+import home_screen.home as home
+import des.screen_one as des_one
+import des.screen_two as des_two
+
 def make_screen_three():
 
     fig, ax = plt.subplots()
 
     # Placeholder data for the graph
-    x = [0, 2, 4, 6, 8, 10]
+    x = [0, 2, 1, 2, 4, 2]
     y = [0, 2, 4, 6, 8, 10]
     ax.plot(x, y)
     ax.set_title('Placeholder Graph')
@@ -88,6 +92,18 @@ def make_screen_three():
             current_xlim = ax.get_xlim()
             ax.set_xlim(current_xlim[0] + 1, current_xlim[1] + 1)
             canvas.draw()
+            
+        if event == 'Home':
+            home.main()
+            break
+        
+        if event == 'Screen 1':
+            des_one.make_screen_one()
+            break
+        
+        if event == 'Screen 2':
+            des_two.make_screen_two()
+            break
 
     window.close()
 
