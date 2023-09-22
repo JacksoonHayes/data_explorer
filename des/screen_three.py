@@ -74,9 +74,14 @@ def make_screen_three():
             break
 
         if event == 'Zoom In':
-            ax.set_xlim(0, 10)
-            ax.set_ylim(0, 10)
-            canvas.draw()
+            if ax.get_xlim()[1] == 10 and ax.get_ylim()[1] == 10:
+                ax.set_xlim(0, 5)
+                ax.set_ylim(0, 5)
+                canvas.draw()
+            else:
+                ax.set_xlim(0, 10)
+                ax.set_ylim(0, 10)
+                canvas.draw()
 
         if event == 'Zoom Out':
             ax.set_xlim(-5, 15)
