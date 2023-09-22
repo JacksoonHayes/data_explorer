@@ -31,8 +31,7 @@ def make_login():
     ]
 
     window = sg.Window('Login screen', layout, size=(400, 300), element_justification='c', margins=(0, 20))
-    logged_in = False
-
+    
     # Display and interact with the Window using an Event Loop
     while True:
         event, values = window.read()
@@ -44,7 +43,6 @@ def make_login():
             password = values['-PASSWORD-']
             # Check if the entered credentials are in the dictionary
             if username in credentials and credentials[username] == password:
-                logged_in = True
                 window.close()
                 # Run the home screen GUI
                 home.main()
