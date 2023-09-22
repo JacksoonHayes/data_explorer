@@ -11,8 +11,10 @@ import home_screen.home as home
 import des.screen_two as des_two
 import des.screen_three as des_three
 
+# Sub routine for the DES 1 GUI
 def make_screen_one():
 
+    # Create the graph
     fig, ax = plt.subplots()
 
     # Placeholder data for the graph
@@ -22,9 +24,11 @@ def make_screen_one():
     ax.set_title('Placeholder Graph')
 
     sg.theme('DarkGrey5')
-
+    
+    # Set the default font for the GUI
     sg.set_options(font=('Century Gothic', 10))
 
+    # Navigation bar at the top of the screen 
     navbar = [
         [sg.Button('Home', size=(15, 1), key='Home', button_color=('white', '#4DA30F')),
         sg.Push(background_color='#6E6E6E'),
@@ -32,6 +36,7 @@ def make_screen_one():
         sg.Button('Screen 3', size=(15, 1), key='Screen 3', button_color=('white', '#4DA30F'))]
     ]
 
+    # Column 1 of the GUI. Main column for graph/chart and its controls
     col1 = [
         [sg.Button('Chart Settings', size=(14, 1), key='Chart Settings'),
         sg.Push(),
@@ -47,7 +52,8 @@ def make_screen_one():
         sg.Push(),
         sg.Button('>', size=(10, 1), key='Pan Right')]
     ]
-
+    
+    # Column 2 of the GUI. Column for summary and chat
     col2 = [
         [sg.Text('Summary', justification='center')],
         [sg.Multiline(key='-SUMMARY-', size=(32, 11), background_color='#C2C2C2', no_scrollbar=True, pad=(0, (6, 6)), write_only=True, disabled=True)],
@@ -62,17 +68,19 @@ def make_screen_one():
 
     window = sg.Window('Data Explorer 1', layout, finalize=True, background_color='#6E6E6E')
 
+    # Draw the graph onto the canvas
     canvas_elem = window['-CANVAS-']
     canvas = FigureCanvasTkAgg(fig, master=canvas_elem.Widget)
     canvas.get_tk_widget().pack(side='top', fill='both', expand=1)
 
-
+    # Display and interact with the Window using an Event Loop
     while True:
         event, values = window.read()
 
         if event in (sg.WIN_CLOSED, 'Exit'):
             break
 
+        # Zoom in on the graph. changes the x and y limits of the graph
         if event == 'Zoom In':
             current_xlim = ax.get_xlim()
             current_ylim = ax.get_ylim()
@@ -85,6 +93,7 @@ def make_screen_one():
                 ax.set_ylim(0, 10)
                 canvas.draw()
 
+        # Zoom out on the graph. changes the x and y limits of the graph
         if event == 'Zoom Out':
             current_xlim = ax.get_xlim()
             current_ylim = ax.get_ylim()
@@ -97,24 +106,29 @@ def make_screen_one():
                 ax.set_ylim(0, 10)
                 canvas.draw()
 
+        # Pan the graph to the left. changes the x limits of the graph
         if event == 'Pan Left':
             current_xlim = ax.get_xlim()
             ax.set_xlim(current_xlim[0] - 1, current_xlim[1] - 1)
             canvas.draw()
 
+        # Pan the graph to the right. changes the x limits of the graph
         if event == 'Pan Right':
             current_xlim = ax.get_xlim()
             ax.set_xlim(current_xlim[0] + 1, current_xlim[1] + 1)
             canvas.draw()
-            
+      
+        # Return to the home screen if button is clicked
         if event == 'Home':
             home.main()
             break
         
+        # Open the second DES if button is clicked
         if event == 'Screen 2':
             des_two.make_screen_two()
             break
         
+        # Open the third DES if button is clicked
         if event == 'Screen 3':
             des_three.make_screen_three()
             break

@@ -6,11 +6,20 @@ import PySimpleGUI as sg
 
 import home_screen.home as home
 
+# Sub routine for the login screen GUI
 def make_login():
     sg.theme('DarkGrey5')
 
+    # Set the default font for the GUI
     title = ("Century Gothic", 18)
     sg.set_options(font=('Century Gothic', 10))
+    
+    # Hardcoded login credentials (username: password)
+    credentials = {
+        'user1': 'password123',
+        'user2': 'password123',
+        'user3': 'password123'
+    }    
 
     layout = [
         [sg.T("Login", font=title)],
@@ -21,35 +30,30 @@ def make_login():
         [sg.Button('Submit', key='-LOGIN-'), sg.Button('Quit')]
     ]
 
-    return sg.Window('Login screen', layout, size=(400, 300), element_justification='c', margins=(0, 20))
+    window = sg.Window('Login screen', layout, size=(400, 300), element_justification='c', margins=(0, 20))
+    logged_in = False
 
-# Hardcoded login credentials (username: password)
-# credentials = {
-#     'user1': 'password123',
-#     'user2': 'password123',
-#     'user3': 'password123'
-# }
+    # Display and interact with the Window using an Event Loop
+    while True:
+        event, values = window.read()
+        if event == sg.WINDOW_CLOSED or event == 'Quit':
+            window.close()
+            break
+        if event == '-LOGIN-':
+            username = values['-USERNAME-']
+            password = values['-PASSWORD-']
+            # Check if the entered credentials are in the dictionary
+            if username in credentials and credentials[username] == password:
+                logged_in = True
+                window.close()
+                # Run the home screen GUI
+                home.main()
+                break
+            else:
+                window['-OUTPUT-'].update('Error: Invalid credentials')
 
-# logged_in = False
+    window.close()
 
-while True:
-    window = make_login()
-    event, values = window.read()
-    if event == sg.WINDOW_CLOSED or event == 'Quit':
-        window.close()
-        break
-    if event == '-LOGIN-':
-        window.close()
-        home.main()
-        # username = values['-USERNAME-']
-        # password = values['-PASSWORD-']
-        # # Check if the entered credentials are in the dictionary
-        # if username in credentials and credentials[username] == password:
-        #     logged_in = True
-        #     # Run the home screen GUI
-        #     home.main()
-        break
-    else:
-        window['-OUTPUT-'].update('Error: Invalid credentials')
-
-window.close()
+if __name__ == '__main__':
+    make_login()
+    

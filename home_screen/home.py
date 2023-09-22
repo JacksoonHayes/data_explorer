@@ -8,9 +8,12 @@ import des.screen_one as des_one
 import des.screen_two as des_two
 import des.screen_three as des_three
 
+# Sub routine for the home screen GUI.
+# 3 columns, one column for each of the data exploration screens.
 def make_home_screen():
     sg.theme('LightBrown12')
 
+    # Set the default font for the GUI
     title = ("Century Gothic", 18)
     sg.set_options(font=('Century Gothic', 10))
 
@@ -44,6 +47,7 @@ def make_home_screen():
 
     return sg.Window('Home Screen', layout, size=(700, 450), element_justification='c')
 
+# Display and interact with the Window using an Event Loop
 def main():
     # Display and interact with the Window using an Event Loop
     window = make_home_screen()
@@ -61,12 +65,15 @@ def main():
             # Run the login screen GUI
             break
         
+        # View screen 1 when the button is clicked
         if event == "Screen 1":
             des_one.make_screen_one()
-            
+        
+        # View screen 2 when the button is clicked
         if event == "Screen 2":
             des_two.make_screen_two()
         
+        # View screen 3 when the button is clicked
         if event == "Screen 3":
             des_three.make_screen_three()
             
