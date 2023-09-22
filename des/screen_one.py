@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
-fig, ax = plt.subplots(figsize=(6, 5))
+fig, ax = plt.subplots()
 
 # Placeholder data for the graph
 x = [0, 2, 4, 6, 8, 10]
