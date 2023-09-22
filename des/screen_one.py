@@ -74,7 +74,9 @@ def make_screen_one():
             break
 
         if event == 'Zoom In':
-            if ax.get_xlim()[1] == 10 and ax.get_ylim()[1] == 10:
+            current_xlim = ax.get_xlim()
+            current_ylim = ax.get_ylim()
+            if current_xlim[1] == 10 and current_ylim[1] == 10:
                 ax.set_xlim(0, 5)
                 ax.set_ylim(0, 5)
                 canvas.draw()
@@ -84,9 +86,16 @@ def make_screen_one():
                 canvas.draw()
 
         if event == 'Zoom Out':
-            ax.set_xlim(-5, 15)
-            ax.set_ylim(-5, 15)
-            canvas.draw()
+            current_xlim = ax.get_xlim()
+            current_ylim = ax.get_ylim()
+            if current_xlim[1] == 10 and current_ylim[1] == 10:
+                ax.set_xlim(-5, 15)
+                ax.set_ylim(-5, 15)
+                canvas.draw()
+            else:
+                ax.set_xlim(0, 10)
+                ax.set_ylim(0, 10)
+                canvas.draw()
 
         if event == 'Pan Left':
             current_xlim = ax.get_xlim()
