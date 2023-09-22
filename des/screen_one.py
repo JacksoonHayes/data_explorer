@@ -3,8 +3,6 @@ Module for the DES 1 GUI
 """
 
 import PySimpleGUI as sg
-import matplotlib
-
 import matplotlib.pyplot as plt
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -69,9 +67,6 @@ while True:
 
     if event in (sg.WIN_CLOSED, 'Exit'):
         break
-    
-    if event == 'Chart settings':
-        sg.Listbox(values=(1, 2, 2))
 
     if event == 'Zoom In':
         ax.set_xlim(0, 10)

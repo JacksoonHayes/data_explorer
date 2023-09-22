@@ -1,5 +1,5 @@
 """
-Module for the Login Screen GUI
+Module for the Login Screen GUI and start of the application.
 """
 
 import PySimpleGUI as sg
