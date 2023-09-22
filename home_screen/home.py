@@ -8,9 +8,20 @@ import des.screen_one as des_one
 import des.screen_two as des_two
 import des.screen_three as des_three
 
-# Sub routine for the home screen GUI.
-# 3 columns, one column for each of the data exploration screens.
 def make_home_screen():
+    """
+    Create and display the home screen GUI.
+
+    This function creates the home screen GUI, which includes three columns, one for each of the data exploration screens.
+    Users can click on buttons to navigate to different screens or log out.
+
+    Parameters:
+        None
+
+    Returns:
+        sg.Window: The PySimpleGUI window object for the home screen.
+    """
+    
     sg.theme('LightBrown12')
 
     # Set the default font for the GUI
@@ -47,8 +58,19 @@ def make_home_screen():
 
     return sg.Window('Home Screen', layout, size=(700, 450), element_justification='c')
 
-# Display and interact with the Window using an Event Loop
 def main():
+    """
+    Start the Home Screen application.
+
+    This function starts the Home Screen application and handles user interactions.
+    It creates the home screen, and navigates to different screens or logs the user out on button clicks.
+
+    Parameters:
+        None
+
+    Returns:
+        None
+    """    
     # Display and interact with the Window using an Event Loop
     window = make_home_screen()
     
