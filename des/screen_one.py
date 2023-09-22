@@ -3,6 +3,8 @@ Module for the DES 1 GUI
 """
 
 import PySimpleGUI as sg
+import matplotlib
+
 import matplotlib.pyplot as plt
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -14,7 +16,6 @@ fig, ax = plt.subplots(figsize=(6, 5))
 x = [0, 2, 4, 6, 8, 10]
 y = [0, 2, 4, 6, 8, 10]
 ax.plot(x, y)
-ax.plot(y, x)
 ax.set_title('Placeholder Graph')
 
 sg.theme('DarkGrey5')
@@ -34,7 +35,7 @@ col1 = [
     sg.Button('Set Data', size=(15, 1), key='Set Data'), 
     sg.Button('Upload Data', size=(15, 1), key='Upload Data')],
     
-    [sg.Canvas(key='-CANVAS-')],
+    [sg.Canvas(size=(600, 500), key='-CANVAS-')],
     
     [sg.Button('<', size=(10, 1), key='Pan Left'),
     sg.Push(),
@@ -46,9 +47,9 @@ col1 = [
 
 col2 = [
     [sg.Text('Summary', justification='center')],
-    [sg.Multiline(key='-SUMMARY-', size=(30, 11), background_color='#C2C2C2', no_scrollbar=True, pad=(0, (6, 6)))],
+    [sg.Multiline(key='-SUMMARY-', size=(32, 11), background_color='#C2C2C2', no_scrollbar=True, pad=(0, (6, 6)), write_only=True, disabled=True)],
     [sg.Text('Chat', justification='center')],
-    [sg.Multiline(key='-CHAT-', size=(30, 16), background_color='#C2C2C2')],
+    [sg.Multiline(key='-CHAT-', size=(30, 16), background_color='#C2C2C2', write_only=True, disabled=True)],
     [sg.Input(size = (25, 1), background_color='#C2C2C2'), sg.Button('Send')]
 ]
 
@@ -68,6 +69,9 @@ while True:
 
     if event in (sg.WIN_CLOSED, 'Exit'):
         break
+    
+    if event == 'Chart settings':
+        sg.Listbox(values=(1, 2, 2))
 
     if event == 'Zoom In':
         ax.set_xlim(0, 10)
